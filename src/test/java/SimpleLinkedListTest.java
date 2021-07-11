@@ -15,7 +15,7 @@ public class SimpleLinkedListTest {
         assertThat(list.size()).isEqualTo(0);
     }
 
-    @Ignore("Remove to run test")
+    //@Ignore("Remove to run test")
     @Test
     public void canCreateFromArray() {
         Character[] values = new Character[]{'1', '2', '3'};
@@ -23,7 +23,7 @@ public class SimpleLinkedListTest {
         assertThat(list.size()).isEqualTo(3);
     }
 
-    @Ignore("Remove to run test")
+    //@Ignore("Remove to run test")
     @Test
     public void popOnEmptyListWillThrow() {
         SimpleLinkedList<String> list = new SimpleLinkedList<String>();

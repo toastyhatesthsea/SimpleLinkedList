@@ -17,12 +17,35 @@ public class SimpleLinkedList<T>
     private Node<T> current;
     private Node<T> previous;
 
-    public <T> SimpleLinkedList()
+    public SimpleLinkedList()
     {
         aSize = 0;
         head = new Node<>();
         current = new Node<>();
         previous = current;
+    }
+
+    public SimpleLinkedList(T[] someValues)
+    {
+        for (T aValue : someValues)
+        {
+            this.push(aValue);
+        }
+    }
+
+    public T[] asArray(Class someClass)
+    {
+        return null;
+    }
+
+    public T pop()
+    {
+        return null;
+    }
+
+    public void reverse()
+    {
+
     }
 
     public void push(T data)
