@@ -9,6 +9,8 @@ Please remove this comment when submitting your solution.
 
 */
 
+import java.util.NoSuchElementException;
+
 public class SimpleLinkedList<T>
 {
 
@@ -38,39 +40,50 @@ public class SimpleLinkedList<T>
         return null;
     }
 
-    public T pop()
+    public T pop() throws NoSuchElementException
     {
-        return null;
+        T answer;
+        if (head.getData() == null)
+        {
+            throw new NoSuchElementException();
+        }
+        if (head.getNextNode() == null)
+        {
+            answer = head.getData();
+            head = null;
+            previous = null;
+        } else
+        {
+            answer = head.getData();
+            head = head.getNextNode();
+        }
+
+        this.aSize -= 1;
+
+        return answer;
     }
 
     public void reverse()
     {
-
+        Node<T> newhead;
+        while (head.getNextNode() != null)
+        {
+            
+        }
     }
 
     public void push(T data)
     {
-        if (head == null)
+        if (head.getData() == null)
         {
             head = new Node<>(data, null);
             current = head;
             previous = head;
         } else
         {
-            if (head == current)
-            {
-                Node<T> nextNode = new Node<>(data, null);
-                head.setNextNode(nextNode);
-                current = nextNode;
-                previous = head;
-            } else
-            {
-                previous = current;
-
-                Node<T> nextNode = new Node<>(data, null);
-                current.setNextNode(nextNode);
-                current = nextNode;
-            }
+            Node<T> newHead = new Node<>(data, null);
+            newHead.setNextNode(head);
+            head = newHead;
         }
         aSize++;
     }
@@ -86,11 +99,12 @@ class Node<T>
 {
     private T aData;
     private Node<T> nextNode;
+    private Node<T> previousNode;
 
-    public Node(T someData, Node<T> aNode)
+    public Node(T someData, Node<T> aNextNode)
     {
         this.aData = someData;
-        nextNode = aNode;
+        this.nextNode = aNextNode;
     }
 
     public Node()
