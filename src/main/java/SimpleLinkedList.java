@@ -65,11 +65,24 @@ public class SimpleLinkedList<T>
 
     public void reverse()
     {
-        Node<T> newhead;
-        while (head.getNextNode() != null)
+        Node<T> reverseHead = null;
+        while (head != null)
         {
-            
+            Node<T> currentHead = head;
+
+            if (reverseHead == null)
+            {
+                reverseHead = new Node<T>(currentHead.getData(), null);
+            }
+            else
+            {
+                Node<T> oldReverseHead = reverseHead;
+                T currentData = currentHead.getData();
+                reverseHead = new Node<>(currentData, oldReverseHead);
+            }
+            head = head.getNextNode();
         }
+        head = reverseHead;
     }
 
     public void push(T data)
